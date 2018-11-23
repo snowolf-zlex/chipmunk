@@ -1,10 +1,13 @@
 server:
   port: 8080
   session-timeout: 30
+  context-path: /
   tomcat:
     max-http-header-size: 3145728
     max-threads: 0
     uri-encoding: UTF-8
+
+
 
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
@@ -13,6 +16,12 @@ mybatis:
 spring:
   profiles:
     active: prod
+  security:
+    user:
+      name: admin
+      password: 123456
+    basic:
+      enabled: false
   mvc:
     view:
       prefix: /
