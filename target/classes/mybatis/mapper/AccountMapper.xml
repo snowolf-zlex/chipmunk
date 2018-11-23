@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.snowolf.chipmunk.dao.AccountDao">
+	<resultMap
+		id="AccountMap"
+		type="org.snowolf.chipmunk.domain.Account"
+	>
+		<id
+			column="id"
+			property="id"
+			jdbcType="BIGINT" />
+		<result
+			column="name"
+			property="name"
+			jdbcType="VARCHAR" />
+		<result
+			column="quota"
+			property="quota"
+			jdbcType="DECIMAL" />
+		<result
+			column="profit"
+			property="profit"
+			jdbcType="DECIMAL" />
+	</resultMap>
+	<select
+		id="read"
+		resultMap="AccountMap"
+	> <![CDATA[select * from account where id = #{id}]]>
+	</select>
+	<insert
+		id="create"
+		parameterType="org.snowolf.chipmunk.domain.Account"
+	><![CDATA[insert into 
+		account (
+			name, 
+			quota, 
+			profit
+		) 
+		values (
+			#{name} , 
+			#{quota}, 
+			#{profit} 
+		)
+		]]></insert>
+	<delete
+		id="delete"
+		parameterType="java.lang.Long"
+	> <![CDATA[delete from account where id = #{id}]]>
+	</delete>
+	<update
+		id="update"
+		parameterType="org.snowolf.chipmunk.domain.Account"
+	>
+	<![CDATA[update into account 
+		set 
+			quota = #{quota} ,
+			profit = #{profit} 
+		where id = #{id}
+	]]>
+	</update>
+</mapper>

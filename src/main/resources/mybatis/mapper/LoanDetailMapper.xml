@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.snowolf.chipmunk.dao.LoanDetailDao">
+	<resultMap
+		id="LoanDetailMap"
+		type="org.snowolf.chipmunk.domain.LoanDetail"
+	>
+		<id
+			column="id"
+			property="id"
+			jdbcType="BIGINT" />
+		<result
+			column="plan_id"
+			property="loanPlan.id"
+			jdbcType="INTEGER" />
+		<result
+			column="loop_num"
+			property="loopNum"
+			jdbcType="INTEGER" />
+		<result
+			column="payment_date"
+			property="paymentDate"
+			jdbcType="DATE" />
+		<result
+			column="principal"
+			property="principal"
+			jdbcType="DECIMAL" />
+		<result
+			column="amount"
+			property="amount"
+			jdbcType="DECIMAL" />
+		<result
+			column="interest"
+			property="interest"
+			jdbcType="DECIMAL" />
+		<result
+			column="total_liabilities"
+			property="totalLiabilities"
+			jdbcType="DECIMAL" />
+	</resultMap>
+	<select
+		id="read"
+		resultMap="LoanDetailMap"
+	> <![CDATA[select * from loan_detail where id = #{id}]]>
+	</select>
+	<select
+		id="readListByPlanId"
+		resultMap="LoanDetailMap"
+	> <![CDATA[select * from loan_detail where plan_id = #{planId}]]>
+	</select>
+	<insert
+		id="create"
+		parameterType="org.snowolf.chipmunk.domain.LoanDetail"
+	><![CDATA[insert into 
+		loan_detail (name, password ) 
+		values (#{name,jdbcType=VARCHAR} , #{password,jdbcType=VARCHAR} )
+		]]></insert>
+	<delete
+		id="delete"
+		parameterType="java.lang.Long"
+	> <![CDATA[delete from loan_detail where id = #{id}]]>
+	</delete>
+	<update
+		id="update"
+		parameterType="org.snowolf.chipmunk.domain.LoanDetail"
+	>
+	<![CDATA[update into loan_detail set name = #{name,jdbcType=VARCHAR} where id = #{id,jdbcType=BIGINT})]]>
+	</update>
+</mapper>
