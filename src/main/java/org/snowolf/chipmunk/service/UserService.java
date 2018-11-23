@@ -4,6 +4,7 @@
 package org.snowolf.chipmunk.service;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @EnableAutoConfiguration
-public interface UserService {
+public interface UserService extends UserDetailsService {
 
 	/**
 	 * @param id
