@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.snowolf.smart.service.UserService#changePassword(long,
+	 * @see org.snowolf.chipmunk.service.UserService#changePassword(long,
 	 * java.lang.String)
 	 */
 	@Override
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.snowolf.smart.service.UserService#checkPassword(long,
+	 * @see org.snowolf.chipmunk.service.UserService#checkPassword(long,
 	 * java.lang.String)
 	 */
 	@Override
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.snowolf.smart.service.UserService#changePassword(long,
+	 * @see org.snowolf.chipmunk.service.UserService#changePassword(long,
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override

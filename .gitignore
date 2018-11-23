@@ -6,3 +6,4 @@ src/main/.DS_Store
 .DS_Store
 .idea/misc.xml
 .idea/vcs.xml
+*.log

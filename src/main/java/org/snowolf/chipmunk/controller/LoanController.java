@@ -71,7 +71,6 @@ public class LoanController {
 	 * 
 	 * 
 	 * @param planId
-	 * @param typeId
 	 * @return
 	 */
 //	@RequestParam(value = "typeId", required = false) long typeId
@@ -103,11 +102,13 @@ public class LoanController {
 	}
 
 //	@NotNull
+//Validating Forms with @Valid Annotation
+//	https://www.codeproject.com/Articles/1187397/A-Tool-for-Spring-MockMvcRequestBuilder-to-Post-Fo?display=Print
 	@PostMapping(value = "/addLoanType")
 	public LoanType addLoanType(@RequestBody LoanType loanType) {
 		if (loanType != null) {
-			loanService.updateLoanType(loanType);
-			return loanService.getLoanType(loanType.getId());
+			LoanType lt = loanService.createLoanType(loanType);
+			return loanService.getLoanType(lt.getId());
 		}
 		return null;
 	}

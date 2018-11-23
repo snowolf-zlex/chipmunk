@@ -15,14 +15,19 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/")
 public class IndexController {
 	
-	/**
-	 * @return
-	 */
-	@RequestMapping(value = "/")
-	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index");
-		mv.addObject("name", "xx");
-		return mv;
+//	/**
+//	 * @return
+//	 */
+//	@RequestMapping(value = "/index")
+//	public ModelAndView index() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("index");
+//		mv.addObject("name", "xx");
+//		return mv;
+//	}
+
+	@RequestMapping(value = "/index")
+	public void index() {
+
 	}
 }

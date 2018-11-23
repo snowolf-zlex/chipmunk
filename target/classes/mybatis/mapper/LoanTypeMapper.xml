@@ -24,13 +24,18 @@
 		resultMap="LoanTypeMap"
 	> <![CDATA[select * from loan_type]]>
 	</select>
+
 	<insert
 		id="create"
 		parameterType="org.snowolf.chipmunk.domain.LoanType"
+		useGeneratedKeys="true"
+		keyProperty="id"
 	><![CDATA[insert into 
-		loan_plan (name) 
+		loan_type (name)
 		values (#{name} )
-		]]></insert>
+		]]>
+	</insert>
+
 	<delete
 		id="delete"
 		parameterType="java.lang.Long"

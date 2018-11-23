@@ -44,7 +44,6 @@ public interface LoanService {
 	 * 获取指定计划下的全部贷款详情
 	 * 
 	 * @param planId
-	 * @param typeId
 	 */
 	public List<LoanDetail> listAllLoanDetailsByPlanId(long planId);
 
@@ -77,4 +76,5 @@ public interface LoanService {
 	 */
 	public void deleteLoanType(long id);
 
+	public LoanType createLoanType(LoanType loanType);
 }

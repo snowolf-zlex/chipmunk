@@ -71,6 +71,7 @@ public class Account implements Serializable {
 	 */
 	public BigDecimal getProfit() {
 		return profit;
+
 	}
 
 	/**

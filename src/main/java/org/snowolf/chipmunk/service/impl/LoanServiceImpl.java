@@ -53,7 +53,7 @@ public class LoanServiceImpl implements LoanService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.snowolf.smart.service.LoanService#listAllLoanPlans()
+	 * @see org.snowolf.chipmunk.service.LoanService#listAllLoanPlans()
 	 */
 	@Override
 	public List<LoanPlan> listAllLoanPlans() {
@@ -63,7 +63,7 @@ public class LoanServiceImpl implements LoanService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.snowolf.smart.service.LoanService#listAllLoanPlans(long)
+	 * @see org.snowolf.chipmunk.service.LoanService#listAllLoanPlans(long)
 	 */
 	@Override
 	public List<LoanPlan> listAllLoanPlans(long typeId) {
@@ -74,7 +74,7 @@ public class LoanServiceImpl implements LoanService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.snowolf.smart.service.LoanService#getLoanPlan(long)
+	 * @see org.snowolf.chipmunk.service.LoanService#getLoanPlan(long)
 	 */
 	@Override
 	public LoanPlan getLoanPlan(long id) {
@@ -87,7 +87,7 @@ public class LoanServiceImpl implements LoanService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.snowolf.smart.service.LoanService#listAllLoanTypes()
+	 * @see org.snowolf.chipmunk.service.LoanService#listAllLoanTypes()
 	 */
 	@Override
 	public List<LoanType> listAllLoanTypes() {
@@ -99,7 +99,7 @@ public class LoanServiceImpl implements LoanService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.snowolf.smart.service.LoanService#updateLoanPlan(org.snowolf.smart.domain
+	 * org.snowolf.chipmunk.service.LoanService#updateLoanPlan(org.snowolf.smart.domain
 	 * .LoanPlan)
 	 */
 	@Override
@@ -112,7 +112,7 @@ public class LoanServiceImpl implements LoanService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.snowolf.smart.service.LoanService#updateLoanType(org.snowolf.smart.domain
+	 * org.snowolf.chipmunk.service.LoanService#updateLoanType(org.snowolf.chipmunk.domain
 	 * .LoanType)
 	 */
 	@Override
@@ -123,7 +123,7 @@ public class LoanServiceImpl implements LoanService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.snowolf.smart.service.LoanService#getLoanType(long)
+	 * @see org.snowolf.chipmunk.service.LoanService#getLoanType(long)
 	 */
 	@Override
 	public LoanType getLoanType(long id) {
@@ -131,12 +131,18 @@ public class LoanServiceImpl implements LoanService {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.snowolf.smart.service.LoanService#deleteLoanType(long)
+	 * @see org.snowolf.chipmunk.service.LoanService#deleteLoanType(long)
 	 */
 	@Override
 	public void deleteLoanType(long id) {
 		
 		loanTypeDao.delete(id);
+	}
+
+	@Override
+	public LoanType createLoanType(LoanType loanType) {
+		loanTypeDao.create(loanType);
+		return loanTypeDao.read(loanType.getId());
 	}
 
 }
