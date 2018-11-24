@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.snowolf.chipmunk.controller;
 
@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Snowolf
- *
  */
 @RestController
 @RequestMapping(value = "/account")
 public class AccountController {
-	@Autowired
-	private AccountService accountService;
 
-	@GetMapping(value = "getAccount")
-	public Account getAccountById(@RequestParam(name = "id") long id) {
-		return accountService.readById(id);
-	}
+    @Autowired
+    private AccountService accountService;
+
+    @GetMapping(value = "getAccount")
+    public Account getAccountById(@RequestParam(name = "id") long id) {
+        return accountService.readById(id);
+    }
 }

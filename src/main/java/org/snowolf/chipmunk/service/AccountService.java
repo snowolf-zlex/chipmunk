@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.snowolf.chipmunk.service;
 
@@ -9,13 +9,10 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author snowolf
- *
  */
 @Component
 @EnableAutoConfiguration
 public interface AccountService {
 
-	public Account readById(long id);
-
-	
+    Account readById(long id);
 }

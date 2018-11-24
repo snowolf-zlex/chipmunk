@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.snowolf.chipmunk.controller;
 
@@ -13,27 +13,25 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author snowolf
- *
  */
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
 
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	/**
-	 * @param id
-	 * @param oldPassword
-	 * @param newPassword
-	 * @return
-	 */
-	@PostMapping(value = "changePasword")
-	public ModelAndView changePassword(@RequestParam(name = "id") long id, @RequestParam(name = "oldPassword") String oldPassword,
-			@RequestParam(name = "newPassword") String newPassword) {
-		boolean isOk = userService.changePassword(id, oldPassword, newPassword);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("isOk", isOk);
-		return mv;
-	}
+    /**
+     *
+     */
+    @PostMapping(value = "changePasword")
+    public ModelAndView changePassword(
+            @RequestParam(name = "id") long id,
+            @RequestParam(name = "oldPassword") String oldPassword,
+            @RequestParam(name = "newPassword") String newPassword) {
+        boolean isOk = userService.changePassword(id, oldPassword, newPassword);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("isOk", isOk);
+        return mv;
+    }
 }

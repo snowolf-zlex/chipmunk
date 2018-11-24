@@ -1,8 +1,9 @@
 /**
- * 
+ *
  */
 package org.snowolf.chipmunk;
 
+import com.alibaba.fastjson.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Before;
@@ -19,39 +20,39 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import com.alibaba.fastjson.JSONObject;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.util.CollectionUtils;
-import org.springframework.util.MultiValueMap;
 
 /**
  * @author Snowolf
- * 
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class LoanTests {
 
-	private MockMvc mvc;
+  private MockMvc mvc;
 
-	@Autowired
-	private LoanController loanController;
+  @Autowired
+  private LoanController loanController;
 
-	@Before
-	public void setUp() {
-		mvc = MockMvcBuilders.standaloneSetup(loanController).build();
-	}
+  @Before
+  public void setUp() {
+    mvc = MockMvcBuilders.standaloneSetup(loanController).build();
+  }
 
-	@Test
-	public void addLoanTypeTest() throws Exception {
-		String paraJson = JSONObject.toJSONString(new LoanType("test"));
-		Map<String, String> map = new HashMap<>();
-		map.put("name","test" );
+  @Test
+  public void addLoanTypeTest() throws Exception {
+    String paraJson = JSONObject.toJSONString(new LoanType("test"));
+    Map<String, String> map = new HashMap<>();
+    map.put("name", "test");
 
-
-		MockHttpServletRequestBuilder b = MockMvcRequestBuilders.post("/loan/addLoanType", map).accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-				.content(paraJson.getBytes());
-		mvc.perform(b).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
-	}
+    MockHttpServletRequestBuilder b =
+            MockMvcRequestBuilders.post("/loan/addLoanType", map)
+                    .accept(MediaType.APPLICATION_JSON)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(paraJson.getBytes());
+    mvc.perform(b)
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andDo(MockMvcResultHandlers.print())
+            .andReturn();
+  }
 }

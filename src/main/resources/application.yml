@@ -1,3 +1,5 @@
+name:
+  Chipmunk
 server:
   port: 8080
   session-timeout: 30
@@ -7,15 +9,13 @@ server:
     max-threads: 0
     uri-encoding: UTF-8
 
-
-
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
 
 spring:
   profiles:
-    active: prod
+    active: prod #Java -jar xxxxxx.jar spring.profiles.actiove=prod
   security:
     user:
       name: admin
@@ -59,6 +59,6 @@ spring:
 #    console: '[%d{yyyy/MM/dd HH:mm:ss}][%thread][%-5level] %logger- %msg%n'
 #    file: '[%d{yyyy/MM/dd HH:mm:ss}][%thread][%-5level] %logger- %msg%n'
 
-massages:
-  data:
-    webname: chipmunk
+resources:
+  ignoredPaths:
+    /favicon.ico, /js/**, /cs/**, /images/**

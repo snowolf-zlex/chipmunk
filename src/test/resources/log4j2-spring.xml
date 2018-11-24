@@ -5,22 +5,22 @@
 <!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，
     当设置成trace时，你会看到log4j2内部各种详细输出-->
 <!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
-<configuration status="WARN" monitorInterval="30">
+<configuration monitorInterval="30" status="WARN">
   <appenders>
     <console name="Console" target="SYSTEM_ERR">
       <PatternLayout pattern="[%d{yyyy/MM/dd HH:mm:ss:SSS}] [%-5p] - %l - %m%n"/>
     </console>
   </appenders>
   <loggers>
-    <logger name="org.springframework" level="INFO"/>
-    <logger name="org.springframework.boot" level="INFO"/>
-    <logger name="org.mybatis" level="INFO"/>
-    <logger name="org.apache.ibatis" level="INFO"/>
-    <logger name="org.hibernate.validator" level="INFO"/>
-    <logger name="java.sql" level="INFO"/>
-    <logger name="java.sql.Connection" level="INFO"/>
-    <logger name="java.sql.Statement" level="INFO"/>
-    <logger name="java.sql.PreparedStatement" level="INFO"/>
+    <logger level="INFO" name="org.springframework"/>
+    <logger level="INFO" name="org.springframework.boot"/>
+    <logger level="INFO" name="org.mybatis"/>
+    <logger level="INFO" name="org.apache.ibatis"/>
+    <logger level="INFO" name="org.hibernate.validator"/>
+    <logger level="INFO" name="java.sql"/>
+    <logger level="INFO" name="java.sql.Connection"/>
+    <logger level="INFO" name="java.sql.Statement"/>
+    <logger level="INFO" name="java.sql.PreparedStatement"/>
     <root level="WARN">
       <appender-ref ref="Console"/>
     </root>
