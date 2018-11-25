@@ -1,6 +1,9 @@
+name:
+  Chipmunk
 server:
   port: 8080
   session-timeout: 30
+  context-path: /
   tomcat:
     max-http-header-size: 3145728
     max-threads: 0
@@ -50,6 +53,6 @@ spring:
 #    console: '[%d{yyyy/MM/dd HH:mm:ss}][%thread][%-5level] %logger- %msg%n'
 #    file: '[%d{yyyy/MM/dd HH:mm:ss}][%thread][%-5level] %logger- %msg%n'
 
-massages:
-  data:
-    webname: chipmunk
+resources:
+  ignoredPaths:
+    /favicon.ico, /js/**, /cs/**, /images/**

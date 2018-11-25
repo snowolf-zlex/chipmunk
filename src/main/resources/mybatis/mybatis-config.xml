@@ -4,56 +4,56 @@
 <configuration>
 	<settings>
 		<!-- 打印查询语句 -->
-    <setting name="logImpl" value="STDOUT_LOGGING" />
+		<setting name="logImpl" value="STDOUT_LOGGING"/>
 	</settings>
 	<typeAliases>
 		<typeAlias
 			alias="Integer"
-			type="java.lang.Integer" />
+			type="java.lang.Integer"/>
 		<typeAlias
 			alias="Long"
-			type="java.lang.Long" />
+			type="java.lang.Long"/>
 		<typeAlias
 			alias="HashMap"
-			type="java.util.HashMap" />
+			type="java.util.HashMap"/>
 		<typeAlias
 			alias="LinkedHashMap"
-			type="java.util.LinkedHashMap" />
+			type="java.util.LinkedHashMap"/>
 		<typeAlias
 			alias="ArrayList"
-			type="java.util.ArrayList" />
+			type="java.util.ArrayList"/>
 		<typeAlias
 			alias="LinkedList"
-			type="java.util.LinkedList" />
+			type="java.util.LinkedList"/>
 	</typeAliases>
-	
-	
-<!-- 	JDBCType            JavaType -->
-<!--     CHAR                String -->
-<!--     VARCHAR             String -->
-<!--     LONGVARCHAR         String -->
-<!--     NUMERIC             java.math.BigDecimal -->
-<!--     DECIMAL             java.math.BigDecimal -->
-<!--     BIT                 boolean -->
-<!--     BOOLEAN             boolean -->
-<!--     TINYINT             byte -->
-<!--     SMALLINT            short -->
-<!--     INTEGER             int -->
-<!--     BIGINT              long -->
-<!--     REAL                float -->
-<!--     FLOAT               double -->
-<!--     DOUBLE              double -->
-<!--     BINARY              byte[] -->
-<!--     VARBINARY           byte[] -->
-<!--     LONGVARBINARY               byte[] -->
-<!--     DATE                java.sql.Date -->
-<!--     TIME                java.sql.Time -->
-<!--     TIMESTAMP           java.sql.Timestamp -->
-<!--     CLOB                Clob -->
-<!--     BLOB                Blob -->
-<!--     ARRAY               Array -->
-<!--     DISTINCT            mapping of underlying type -->
-<!--     STRUCT              Struct -->
-<!--     REF                 Ref -->
-<!--     DATALINK            java.net.URL -->
+
+
+	<!-- 	JDBCType            JavaType -->
+	<!--     CHAR                String -->
+	<!--     VARCHAR             String -->
+	<!--     LONGVARCHAR         String -->
+	<!--     NUMERIC             java.math.BigDecimal -->
+	<!--     DECIMAL             java.math.BigDecimal -->
+	<!--     BIT                 boolean -->
+	<!--     BOOLEAN             boolean -->
+	<!--     TINYINT             byte -->
+	<!--     SMALLINT            short -->
+	<!--     INTEGER             int -->
+	<!--     BIGINT              long -->
+	<!--     REAL                float -->
+	<!--     FLOAT               double -->
+	<!--     DOUBLE              double -->
+	<!--     BINARY              byte[] -->
+	<!--     VARBINARY           byte[] -->
+	<!--     LONGVARBINARY               byte[] -->
+	<!--     DATE                java.sql.Date -->
+	<!--     TIME                java.sql.Time -->
+	<!--     TIMESTAMP           java.sql.Timestamp -->
+	<!--     CLOB                Clob -->
+	<!--     BLOB                Blob -->
+	<!--     ARRAY               Array -->
+	<!--     DISTINCT            mapping of underlying type -->
+	<!--     STRUCT              Struct -->
+	<!--     REF                 Ref -->
+	<!--     DATALINK            java.net.URL -->
 </configuration>

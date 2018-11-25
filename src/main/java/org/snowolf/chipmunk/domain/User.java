@@ -1,151 +1,161 @@
 package org.snowolf.chipmunk.domain;
 
-
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.util.CollectionUtils;
 
-import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Collection;
+public class User implements UserDetails, Serializable {
 
-public class User implements UserDetails, Serializable{
+  private static final long serialVersionUID = 2568249571307575914L;
 
+  private long id;
 
-    private static final long serialVersionUID = 2568249571307575914L;
+  private String username;
+  private String password;
+  private List<Role> roleList;
+  private boolean isAccountNonExpired;
+  private boolean isAccountNonLocked;
+  private boolean isCredentialsNonExpired;
+  private boolean isEnabled;
+  private List<GrantedAuthority> authorities;
 
-    private long id;
+  public User() {
 
-    private String username;
-    private String password;
-    private String role;
-    private boolean isAccountNonExpired;
-    private boolean isAccountNonLocked;
-    private boolean isCredentialsNonExpired;
-    private boolean isEnabled;
+  }
 
-    public User(){
+  public User(long id, String username, String password, List<GrantedAuthority> authorities) {
+    this.id = id;
+    this.username = username;
+    this.password = password;
+    this.authorities = authorities;
+  }
 
+  /**
+   * Returns the authorities granted to the user. Cannot return <code>null</code>.
+   *
+   * @return the authorities, sorted by natural key (never <code>null</code>)
+   */
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    if (CollectionUtils.isEmpty(roleList)) {
+      return null;
+    }
+    List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
+
+    for (Role role : roleList) {
+      grantedAuthorityList.add(new SimpleGrantedAuthority(role.getName()));
     }
 
-    public User(String username, String password, String  role){
-        this.setUsername(username);
-        this.setPassword(password);
-        this.setRole(role);
-    }
-    /**
-     * Returns the authorities granted to the user. Cannot return <code>null</code>.
-     *
-     * @return the authorities, sorted by natural key (never <code>null</code>)
-     */
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority(getRole()));
-    }
+    return grantedAuthorityList;
+  }
 
-    /**
-     * Returns the password used to authenticate the user.
-     *
-     * @return the password
-     */
-    @Override
-    public String getPassword() {
-        return password;
-    }
+  /**
+   * Returns the password used to authenticate the user.
+   *
+   * @return the password
+   */
+  @Override
+  public String getPassword() {
+    return password;
+  }
 
-    /**
-     * Returns the username used to authenticate the user. Cannot return <code>null</code>.
-     *
-     * @return the username (never <code>null</code>)
-     */
-    @Override
-    public String getUsername() {
-        return username;
-    }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    /**
-     * Indicates whether the user's account has expired. An expired account cannot be
-     * authenticated.
-     *
-     * @return <code>true</code> if the user's account is valid (ie non-expired),
-     * <code>false</code> if no longer valid (ie expired)
-     */
-    @Override
-    public boolean isAccountNonExpired() {
-        return isAccountNonExpired;
-    }
+  /**
+   * Returns the username used to authenticate the user. Cannot return <code>null</code>.
+   *
+   * @return the username (never <code>null</code>)
+   */
+  @Override
+  public String getUsername() {
+    return username;
+  }
 
-    /**
-     * Indicates whether the user is locked or unlocked. A locked user cannot be
-     * authenticated.
-     *
-     * @return <code>true</code> if the user is not locked, <code>false</code> otherwise
-     */
-    @Override
-    public boolean isAccountNonLocked() {
-        return isAccountNonLocked;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-    /**
-     * Indicates whether the user's credentials (password) has expired. Expired
-     * credentials prevent authentication.
-     *
-     * @return <code>true</code> if the user's credentials are valid (ie non-expired),
-     * <code>false</code> if no longer valid (ie expired)
-     */
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return isCredentialsNonExpired;
-    }
+  /**
+   * Indicates whether the user's account has expired. An expired account cannot be
+   * authenticated.
+   *
+   * @return <code>true</code> if the user's account is valid (ie non-expired), <code>false</code>
+   * if no longer valid (ie expired)
+   */
+  @Override
+  public boolean isAccountNonExpired() {
+    return isAccountNonExpired;
+  }
 
-    /**
-     * Indicates whether the user is enabled or disabled. A disabled user cannot be
-     * authenticated.
-     *
-     * @return <code>true</code> if the user is enabled, <code>false</code> otherwise
-     */
-    @Override
-    public boolean isEnabled() {
-        return isEnabled;
-    }
+  public void setAccountNonExpired(boolean accountNonExpired) {
+    isAccountNonExpired = accountNonExpired;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  /**
+   * Indicates whether the user is locked or unlocked. A locked user cannot be authenticated.
+   *
+   * @return <code>true</code> if the user is not locked, <code>false</code> otherwise
+   */
+  @Override
+  public boolean isAccountNonLocked() {
+    return isAccountNonLocked;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public void setAccountNonLocked(boolean accountNonLocked) {
+    isAccountNonLocked = accountNonLocked;
+  }
 
-    public String getRole() {
-        return role;
-    }
+  /**
+   * Indicates whether the user's credentials (password) has expired. Expired credentials prevent
+   * authentication.
+   *
+   * @return <code>true</code> if the user's credentials are valid (ie non-expired), <code>false
+   * </code> if no longer valid (ie expired)
+   */
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return isCredentialsNonExpired;
+  }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+  public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+    isCredentialsNonExpired = credentialsNonExpired;
+  }
 
-    public long getId() {
-        return id;
-    }
+  /**
+   * Indicates whether the user is enabled or disabled. A disabled user cannot be authenticated.
+   *
+   * @return <code>true</code> if the user is enabled, <code>false</code> otherwise
+   */
+  @Override
+  public boolean isEnabled() {
+    return isEnabled;
+  }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+  public void setEnabled(boolean enabled) {
+    this.isEnabled = enabled;
+  }
 
-    public void setEnabled(boolean enabled) {
-        this.isEnabled = enabled;
-    }
 
-    public void setAccountNonExpired(boolean accountNonExpired) {
-        isAccountNonExpired = accountNonExpired;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public void setAccountNonLocked(boolean accountNonLocked) {
-        isAccountNonLocked = accountNonLocked;
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
-        isCredentialsNonExpired = credentialsNonExpired;
-    }
+  public List<Role> getRoleList() {
+    return roleList;
+  }
+
+  public void setRoleList(List<Role> roleList) {
+    this.roleList = roleList;
+  }
 }

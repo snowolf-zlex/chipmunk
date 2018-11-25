@@ -1,50 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.snowolf.chipmunk.dao.LoanTypeDao">
-	<resultMap
-		id="LoanTypeMap"
-		type="org.snowolf.chipmunk.domain.LoanType"
-	>
-		<id
-			column="id"
-			property="id"
-			jdbcType="BIGINT" />
-		<result
-			column="name"
-			property="name"
-			jdbcType="VARCHAR" />
-	</resultMap>
-	<select
-		id="read"
-		resultMap="LoanTypeMap"
-	> <![CDATA[select * from loan_type where id = #{id}]]>
-	</select>
-	<select
-		id="readAll"
-		resultMap="LoanTypeMap"
-	> <![CDATA[select * from loan_type]]>
-	</select>
+  <resultMap
+    id="LoanTypeMap"
+    type="org.snowolf.chipmunk.domain.LoanType"
+  >
+    <id
+      column="id"
+      jdbcType="BIGINT"
+      property="id"/>
+    <result
+      column="name"
+      jdbcType="VARCHAR"
+      property="name"/>
+  </resultMap>
+  <select
+    id="read"
+    resultMap="LoanTypeMap"
+  > <![CDATA[select * from loan_type where id = #{id}]]>
+  </select>
+  <select
+    id="readAll"
+    resultMap="LoanTypeMap"
+  > <![CDATA[select * from loan_type]]>
+  </select>
 
-	<insert
-		id="create"
-		keyProperty="id"
-		useGeneratedKeys="true"
-		parameterType="org.snowolf.chipmunk.domain.LoanType"
-	><![CDATA[insert into 
+  <insert
+    id="create"
+    keyProperty="id"
+    parameterType="org.snowolf.chipmunk.domain.LoanType"
+    useGeneratedKeys="true"
+  ><![CDATA[insert into
 		loan_type (name)
 		values (#{name} )
 		]]>
-	</insert>
+  </insert>
 
-	<delete
-		id="delete"
-		parameterType="java.lang.Long"
-	> <![CDATA[delete from loan_type where id = #{id}]]>
-	</delete>
-	<update
-		id="update"
-		parameterType="org.snowolf.chipmunk.domain.LoanType"
-	>
-	<![CDATA[update into loan_type set name = #{name} where id = #{id})]]>
-	</update>
+  <delete
+    id="delete"
+    parameterType="java.lang.Long"
+  > <![CDATA[delete from loan_type where id = #{id}]]>
+  </delete>
+  <update
+    id="update"
+    parameterType="org.snowolf.chipmunk.domain.LoanType"
+  >
+    <![CDATA[update into loan_type set name = #{name} where id = #{id})]]>
+  </update>
 </mapper>

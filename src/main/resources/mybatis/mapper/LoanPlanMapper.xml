@@ -1,69 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.snowolf.chipmunk.dao.LoanPlanDao">
-	<resultMap
-		id="LoanPlanMap"
-		type="org.snowolf.chipmunk.domain.LoanPlan"
-	>
-		<id
-			column="id"
-			property="id"
-			jdbcType="BIGINT" />
-		<result
-			column="name"
-			property="name"
-			jdbcType="VARCHAR" />
-		<result
-			column="is_undergoing"
-			property="isUndergoing"
-			jdbcType="BOOLEAN" />
-		<result
-			column="rate"
-			property="rate"
-			jdbcType="DECIMAL" />
-		<result
-			column="amount"
-			property="amount"
-			jdbcType="DECIMAL" />
-		<result
-			column="loops"
-			property="loops"
-			jdbcType="INTEGER" />
-		<result
-			column="start_date"
-			property="startDate"
-			jdbcType="DATE" />
-		<result
-			column="end_date"
-			property="endDate"
-			jdbcType="DATE" />
-		<result
-			column="payment_day"
-			property="paymentDay"
-			jdbcType="INTEGER" />
-		<result
-			column="expected_interest"
-			property="expectedInterest"
-			jdbcType="DECIMAL" />
-		<result
-			column="loan_type_id"
-			property="loanType.id"
-			jdbcType="INTEGER" />
-	</resultMap>
-	<select
-		id="read"
-		resultMap="LoanPlanMap"
-	> <![CDATA[select * from loan_plan where id = #{id}]]>
-	</select>
-	<select
-		id="readAll"
-		resultMap="LoanPlanMap"
-	> <![CDATA[select * from loan_plan]]>
-	</select>
-	<insert
-		id="create"
-		parameterType="org.snowolf.chipmunk.domain.LoanPlan"
-	><![CDATA[insert into 
+  <resultMap
+    id="LoanPlanMap"
+    type="org.snowolf.chipmunk.domain.LoanPlan"
+  >
+    <id
+      column="id"
+      jdbcType="BIGINT"
+      property="id"/>
+    <result
+      column="name"
+      jdbcType="VARCHAR"
+      property="name"/>
+    <result
+      column="is_undergoing"
+      jdbcType="BOOLEAN"
+      property="isUndergoing"/>
+    <result
+      column="rate"
+      jdbcType="DECIMAL"
+      property="rate"/>
+    <result
+      column="amount"
+      jdbcType="DECIMAL"
+      property="amount"/>
+    <result
+      column="loops"
+      jdbcType="INTEGER"
+      property="loops"/>
+    <result
+      column="start_date"
+      jdbcType="DATE"
+      property="startDate"/>
+    <result
+      column="end_date"
+      jdbcType="DATE"
+      property="endDate"/>
+    <result
+      column="payment_day"
+      jdbcType="INTEGER"
+      property="paymentDay"/>
+    <result
+      column="expected_interest"
+      jdbcType="DECIMAL"
+      property="expectedInterest"/>
+    <result
+      column="loan_type_id"
+      jdbcType="INTEGER"
+      property="loanType.id"/>
+  </resultMap>
+  <select
+    id="read"
+    resultMap="LoanPlanMap"
+  > <![CDATA[select * from loan_plan where id = #{id}]]>
+  </select>
+  <select
+    id="readAll"
+    resultMap="LoanPlanMap"
+  > <![CDATA[select * from loan_plan]]>
+  </select>
+  <insert
+    id="create"
+    parameterType="org.snowolf.chipmunk.domain.LoanPlan"
+  ><![CDATA[insert into
 		loan_plan (
 			name, 
 			loan_type_id, 
@@ -89,16 +90,16 @@
 			#{expected_interest}
 		)
 		]]></insert>
-	<delete
-		id="delete"
-		parameterType="java.lang.Long"
-	> <![CDATA[delete from loan_plan where id = #{id}]]>
-	</delete>
-	<update
-		id="update"
-		parameterType="org.snowolf.chipmunk.domain.LoanPlan"
-	>
-	<![CDATA[update into loan_plan 
+  <delete
+    id="delete"
+    parameterType="java.lang.Long"
+  > <![CDATA[delete from loan_plan where id = #{id}]]>
+  </delete>
+  <update
+    id="update"
+    parameterType="org.snowolf.chipmunk.domain.LoanPlan"
+  >
+    <![CDATA[update into loan_plan
 		set 
 			name = #{name},
 			loan_type_id = #{loanType.id}, 
@@ -111,5 +112,5 @@
 			payment_day = #{payment_day}, 
 			expected_interest = #{expected_interest}		
 		where id = #{id})]]>
-	</update>
+  </update>
 </mapper>
